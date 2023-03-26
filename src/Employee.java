@@ -1,26 +1,36 @@
+import javax.xml.namespace.QName;
 import java.util.Objects;
 
 public class Employee {
-    private Counter idEmployee;
-    private String name;
-    private int department;
+    private int id;
+    private static int counter = 1;
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private int dep;
     private int salary;
 
 
-
-    public Employee(String name,int department,int salary) {
-        this.name = name;
-        this.department = department;
+    public Employee(String firstName,String middleName,String lastName, int dep, int salary) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.dep = dep;
         this.salary = salary;
-        idEmployee = new Counter();
-            }
-
-    public String getName() {
-        return name;
+        this.id = counter++;
     }
 
-    public int getDepartment() {
-        return department;
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getMiddleName() {
+        return middleName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public int getDep() {
+        return dep;
     }
 
     public int getSalary() {
@@ -31,18 +41,18 @@ public class Employee {
         this.salary = salary;
     }
 
-    public void setDepartment(int department) {
-        this.department = department;
+    public void setDep(int dep) {
+        this.dep = dep;
     }
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "idEmployee=" + idEmployee +
-                ", name='" + name + '\'' +
-                ", department=" + department +
-                ", salary=" + salary +
-                '}';
+        return "id=" + id +
+                ": " + lastName +
+                " " + firstName +
+                " " + middleName + " /" +
+                "отдел - " + dep +
+                "/ зарплата - " + salary +
+                " руб.";
     }
-
 }
